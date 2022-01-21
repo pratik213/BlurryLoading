@@ -6,6 +6,7 @@ let load = 0
 loadText.style.opacity = 0
 
 
+
 const scale = (number, inMin, inMax, outMin, outMax) => {
     return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
