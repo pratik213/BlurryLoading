@@ -1,22 +1,23 @@
-const loadText=document.querySelector('.loading-text')
-const bg=document.querySelector('.bg')
-let load=0
-let int=setInterval(blurring,30)
-function blurring(){
-    load++
+const loadText = document.querySelector('.loading-text')
+const bg = document.querySelector('.bg')
+var slider = document.getElementById("myRange");
 
-    if (load>99){
-      clearInterval(int)  
-    }
-    loadText.innerText=`${load}%`
-    loadText.style.opacity= scale(load,0,100,1,0)   
-    // we are doing so beacuse we wan't to go from opaque to transparent    its value is going from 0 to 1
-    
-    
-    bg.style.filter=`blur(${scale(load,0,100,30,0)}px)`
-    // its value is going from 30 to 0 in same amount
-}
+let load = 0
+loadText.style.opacity = 0
+
+
+
 const scale = (number, inMin, inMax, outMin, outMax) => {
-  return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+    return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
-// this function is copied from stack overflow
+
+slider.addEventListener("input", (e) => {
+    // alert(e.target.value)
+    load = e.target.value
+    loadText.innerText = `${load}%`
+    loadText.style.opacity = load / 100 * 1
+    bg.style.filter = `blur(${scale(load,0,100,30,0)}px)`
+
+
+
+})
