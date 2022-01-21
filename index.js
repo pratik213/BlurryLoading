@@ -1,5 +1,7 @@
 const loadText = document.querySelector('.loading-text')
 const bg = document.querySelector('.bg')
+var slider = document.getElementById("myRange");
+
 let load = 0
 let int = setInterval(blurring, 20)
 
@@ -23,3 +25,7 @@ const scale = (number, inMin, inMax, outMin, outMax) => {
         return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }
     // this function is copied from stack overflow
+
+slider.addEventListener(onchange, (e) => {
+    alert("hi")
+})
